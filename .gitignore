@@ -1,0 +1,19 @@
+# mac
+.DS_Store
+
+# dependencies
+node_modules
+
+# local env files
+.env
+.env.*.local
+
+# log files
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode
+
+# lock files
+yarn.lock
