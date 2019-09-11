@@ -10,11 +10,24 @@ exports.init = async ({ app }) => {
     app.enable('trust proxy');
 
     app.use(cors());
-    
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
     app.use(config.api.prefix, routes());
+
+    app.use((_req, _res, next) => {
+        const err = new Error('Something went wrong...');
+        err['status'] = 404;
+        next(err);
+    });
+
+    app.use((err, _req, res, _next) => {  
+        return res.json({
+            error: true,
+            error_message: err.message
+        }).status(err.status || 500);
+    });
 
     return app;
 };

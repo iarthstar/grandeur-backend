@@ -1,9 +1,10 @@
+const appName = require("../package.json").name;
+
 module.exports = {
     apps: [{
-        name: 'grandeur',
+        name: appName,
         script: 'index.js',
 
-        args: 'one two',
         instances : "max",
         exec_mode : "cluster",
         autorestart: true,
