@@ -1,3 +1,4 @@
+const utils = require("../../utils");
 const axios = require('axios');
 
 exports.getPriceForCryptos = (method, req, res) => {
@@ -12,6 +13,7 @@ exports.getPriceForCryptos = (method, req, res) => {
         case "get": {
             const { cryptoNames, currencies } = req.params;
             options.url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${cryptoNames}&tsyms=${currencies}`;
+            utils.log(options, req.params);
         } break;
     }
 
@@ -25,5 +27,3 @@ exports.getPriceForCryptos = (method, req, res) => {
         });
 
 };
-
-
