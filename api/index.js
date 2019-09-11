@@ -6,31 +6,35 @@ const igScrapper = require('./routes/igScrapper');
 module.exports = () => {
     const route = Router();
 
-    const POST = "post", GET = "get";
-
     const addRoute = (method, path, func) => {
         switch (method) {
             case "get":
-                route.get(`/${path.join("/")}`, (req, res) => func(method, req, res));
+                route.get(`${Array.isArray(path) ? path.join("/") : path}`, (req, res) => func(method, req, res));
                 break;
             case "post":
-                route.post(`/${path.join("/")}`, (req, res) => func(method, req, res));
+                route.post(`${Array.isArray(path) ? path.join("/") : path}`, (req, res) => func(method, req, res));
                 break;
-            default:
-                route.get(`/${path.join("/")}`, (req, res) => func(method, req, res));
-                break;
+            default: break;
         }
     };
 
+    const POST = (strings, eval) => {
+        addRoute('post', strings[0].trim(), eval);
+    }
 
+    const GET = (strings, eval) => {
+        addRoute('get', strings[0].trim(), eval);
+    }
+
+    
     // MyCryptos APIs
-    addRoute(POST, ["my-cryptos", "getPriceForCryptos"]                               , myCryptos.getPriceForCryptos);
-    addRoute(GET , ["my-cryptos", "getPriceForCryptos", ":cryptoName", ":currencies"] , myCryptos.getPriceForCryptos);
+    POST `/my-cryptos/getPriceForCryptos                                 ${myCryptos.getPriceForCryptos}`
+    GET  `/my-cryptos/getPriceForCryptos/:cryptoNames/:currencies        ${myCryptos.getPriceForCryptos}`
 
 
-    // Instagram Scrapper
-    addRoute(POST, ["ig-scrapper", "getUserInfo"]                                     , igScrapper.getUserInfo);
-    addRoute(GET , ["ig-scrapper", "getUserInfo", ":username"]                        , igScrapper.getUserInfo);
+    // Instagram Scrapper APIs
+    POST `/ig-scrapper/getUserInfo                                       ${igScrapper.getUserInfo}`
+    GET  `/ig-scrapper/getUserInfo/:username                             ${igScrapper.getUserInfo}`
 
 
     // Todo :: Github Scrapper

@@ -26,9 +26,9 @@ exports.getUserInfo = (method, req, res) => {
             const str = response.data;
             const sharedDataRegex = /(window._sharedData = )(.*)(;<\/script>)/;
 
-            if (sharedDataRegex.test(str)) {
+            if ( sharedDataRegex.test(str) ) {
 
-                const userInfo = JSON.parse(sharedDataRegex.exec(str)[2]).entry_data.ProfilePage[0].graphql.user;
+                const userInfo = JSON.parse(sharedDataRegex.exec(str)[2]).entry_data.ProfilePage[0].graphql.user; 
                 const { username, biography, full_name, is_private, edge_owner_to_timeline_media, edge_followed_by, edge_follow, profile_pic_url_hd } = userInfo;
 
                 return res.send({
@@ -47,6 +47,6 @@ exports.getUserInfo = (method, req, res) => {
             }
         }).catch(err => {
             utils.error({ err });
-            return res.json({ error: true, error_message: "Something went wrong..." }).status(404);
+            return res.json({ error : true, error_message : "Something went wrong..." }).status(404);
         });
 };

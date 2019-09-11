@@ -32,7 +32,7 @@ async function startServer() {
             utils.log(err);
             return;
         }
-        utils.success(`Server is running on: http://localhost:${config.server.PORT}`);
+        utils.success(`Server is running on -> http://localhost:${config.server.PORT}`);
     });
 }
 
