@@ -9,16 +9,16 @@
 
 
 // modules import
-const colors = require("colors");
+const colors  = require("colors");
 const appName = require("../package.json").name;
 
 colors.setTheme({
-    log: 'white',
-    info: 'magenta',
+    log    : 'white',
+    info   : 'magenta',
     success: 'green',
-    error: 'red',
-    warn: 'yellow',
-    app: 'grey'
+    error  : 'red',
+    warn   : 'yellow',
+    app    : 'grey'
 });
 
 
@@ -37,11 +37,11 @@ function log(type = "error", header = "", ...args) {
         }
     })
     switch (type) {
-        case 'log': console.log(`[${appName.toLowerCase()}]`.app, ...args); break;
+        case 'log'    : console.log(`[${appName.toLowerCase()}]`.app, ...args); break;
         case 'success': console.log(`[${appName.toLowerCase()}]`.app, ...args); break;
-        case 'error': console.error(`[${appName.toLowerCase()}]`.app, ...args); break;
-        case 'warn': console.warn(`[${appName.toLowerCase()}]`.app, ...args); break;
-        case 'info': console.info(`[${appName.toLowerCase()}]`.app, header.toUpperCase().info, "------->", ...args);
+        case 'error'  : console.error(`[${appName.toLowerCase()}]`.app, ...args); break;
+        case 'warn'   : console.warn(`[${appName.toLowerCase()}]`.app, ...args); break;
+        case 'info'   : console.info(`[${appName.toLowerCase()}]`.app, header.toUpperCase().info, "------->", ...args);
             console.info(`[${appName.toLowerCase()}]`.app, Date()); break;
         default: console.log(`[${appName.toLowerCase()}]`.app, text.log, ...args); break;
     }
@@ -64,11 +64,11 @@ function initApp() {
  * @module utils
  */
 module.exports = {
-    log: (...args) => log("log", "", ...args),
+    log    : (...args) => log("log", "", ...args),
     success: (...args) => log("success", "", ...args),
-    error: (...args) => log("error", "", ...args),
-    warn: (...args) => log("warn", "", ...args),
-    info: (...args) => log("info", ...args),
+    error  : (...args) => log("error", "", ...args),
+    warn   : (...args) => log("warn", "", ...args),
+    info   : (...args) => log("info", ...args),
     initApp,
     appName
 }

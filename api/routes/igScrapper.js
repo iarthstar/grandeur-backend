@@ -36,9 +36,9 @@ exports.getUserInfo = (method, req, res) => {
                     biography,
                     full_name,
                     is_private,
-                    posts: getCount(edge_owner_to_timeline_media),
-                    followers: getCount(edge_followed_by),
-                    following: getCount(edge_follow),
+                    posts          : getCount(edge_owner_to_timeline_media),
+                    followers      : getCount(edge_followed_by),
+                    following      : getCount(edge_follow),
                     profile_pic_url: profile_pic_url_hd
                 });
 

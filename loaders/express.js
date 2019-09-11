@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const routes = require('../api');
-const config = require('../config');
+const cors       = require('cors');
+const routes     = require('../api');
+const config     = require('../config');
 
 exports.init = async ({ app }) => {
 

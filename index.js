@@ -17,7 +17,7 @@ const utils = require("./utils");
 utils.initApp();
 
 // modules import
-const config = require('./config');
+const config  = require('./config');
 const loaders = require('./loaders');
 const express = require('express');
 

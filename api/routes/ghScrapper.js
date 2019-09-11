@@ -27,11 +27,11 @@ exports.getRepoInfo = (method, req, res) => {
             const {
                 language,
                 description,
-                name: reponame,
-                private: is_private,
-                stargazers_count: stargazers,
-                watchers_count: watchers,
-                forks_count: forks,
+                name             : reponame,
+                private          : is_private,
+                stargazers_count : stargazers,
+                watchers_count   : watchers,
+                forks_count      : forks,
                 open_issues_count: open_issues
             } = response.data;
 
