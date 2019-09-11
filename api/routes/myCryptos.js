@@ -13,7 +13,6 @@ exports.getPriceForCryptos = (method, req, res) => {
         case "get": {
             const { cryptoNames, currencies } = req.params;
             options.url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${cryptoNames}&tsyms=${currencies}`;
-            utils.log(options, req.params);
         } break;
     }
 
