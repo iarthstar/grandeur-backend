@@ -10,20 +10,34 @@ module.exports = () => {
     const oneMoreRoute = (method, path, func) => {
         switch (method) {
             case "get":
-                route.get(path, (req, res) => func(method, req, res));
-                break;
+                route.get(path, (req, res) => {
+                    try {
+                        func(method, req, res)
+                    } catch (err) {
+                        utils.error(err);
+                        return res.json({ error: true, error_message: "Something went wrong..." }).status(500);
+                    }
+                }); break;
+
             case "post":
-                route.post(path, (req, res) => func(method, req, res));
-                break;
+                route.post(path, (req, res) => {
+                    try {
+                        func(method, req, res)
+                    } catch (err) {
+                        utils.error(err);
+                        return res.json({ error: true, error_message: "Something went wrong..." }).status(500);
+                    }
+                }); break;
+
             default: break;
         }
     };
 
-    const POST = (strings, eval) => {
+    const POST_____ = (strings, eval) => {
         oneMoreRoute('post', strings[0].trim(), eval);
     }
 
-    const GET = (strings, eval) => {
+    const GET______ = (strings, eval) => {
         oneMoreRoute('get', strings[0].trim(), eval);
     }
 
@@ -31,20 +45,19 @@ module.exports = () => {
     //
     // ────────────────────────────────────────────────────────── ROUTES ───────
     //
-    
-    // MyCryptos APIs
-    POST `/my-cryptos/getPriceForCryptos                                 ${ myCryptos.getPriceForCryptos }`
-    GET  `/my-cryptos/getPriceForCryptos/:cryptoNames/:currencies        ${ myCryptos.getPriceForCryptos }`
 
+    // MyCryptos APIs
+    POST_____`/my-cryptos/getPriceForCryptos                                 ${myCryptos.getPriceForCryptos}`
+    GET______`/my-cryptos/getPriceForCryptos/:cryptoNames/:currencies        ${myCryptos.getPriceForCryptos}`
 
     // Instagram Scrapper APIs
-    POST `/ig-scrapper/getUserInfo                                       ${ igScrapper.getUserInfo }`
-    GET  `/ig-scrapper/getUserInfo/:username                             ${ igScrapper.getUserInfo }`
+    POST_____`/ig-scrapper/getUserInfo                                       ${igScrapper.getUserInfo}`
+    GET______`/ig-scrapper/getUserInfo/:username                             ${igScrapper.getUserInfo}`
 
 
-    // Todo :: Github APIs
-    POST `/gh-api/getRepoInfo                                            ${ ghScrapper.getRepoInfo }`
-    GET  `/gh-api/getRepoInfo/:username/:reponame                        ${ ghScrapper.getRepoInfo }`
+    // Github APIs
+    POST_____`/gh-api/getRepoInfo                                            ${ghScrapper.getRepoInfo}`
+    GET______`/gh-api/getRepoInfo/:username/:reponame                        ${ghScrapper.getRepoInfo}`
 
 
     return route;

@@ -46,7 +46,7 @@ exports.getUserInfo = (method, req, res) => {
                 throw "Regex Test Failed";
             }
         }).catch(err => {
-            utils.error({ err });
+            utils.error("AXIOS CATCH", err);
             return res.json({ error : true, error_message : "Something went wrong..." }).status(404);
         });
 };
