@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const cors       = require('cors');
 const routes     = require('../api');
 const config     = require('../config');
+const utils      = require('../utils');
 
 exports.init = async ({ app }) => {
 
@@ -18,6 +19,7 @@ exports.init = async ({ app }) => {
 
     app.use((_req, _res, next) => {
         const err = new Error('Something went wrong...');
+        utils.error(err);
         err['status'] = 404;
         next(err);
     });

@@ -24,6 +24,26 @@ const oneMoreRoute = (method, path, func) => {
                 }
             }); break;
 
+        case "put":
+            route.put(path, (req, res) => {
+                try {
+                    func(method, req, res)
+                } catch (err) {
+                    utils.error(err);
+                    return res.json({ error: true, error_message: "Something went wrong..." }).status(500);
+                }
+            }); break;
+
+        case "delete":
+            route.delete(path, (req, res) => {
+                try {
+                    func(method, req, res)
+                } catch (err) {
+                    utils.error(err);
+                    return res.json({ error: true, error_message: "Something went wrong..." }).status(500);
+                }
+            }); break;
+
         case "middle":
             route.use(path, (req, res, next) => {
                 try {
@@ -50,4 +70,12 @@ exports.POST_____ = (strings, eval) => {
 
 exports.GET______ = (strings, eval) => {
     oneMoreRoute('get', strings[0].trim(), eval);
+}
+
+exports.PUT______ = (strings, eval) => {
+    oneMoreRoute('put', strings[0].trim(), eval);
+}
+
+exports.DELETE___ = (strings, eval) => {
+    oneMoreRoute('delete', strings[0].trim(), eval);
 }

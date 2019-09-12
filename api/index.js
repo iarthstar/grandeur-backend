@@ -1,12 +1,13 @@
 const { Router } = require('express');
 
-const { MIDDLE___, POST_____, GET______, initializeRoute } = require('./utils');
+const { MIDDLE___, POST_____, GET______, PUT______, DELETE___, initializeRoute } = require('./utils');
 
 const middleware = require('./middlewares');
 
 const myCryptos  = require('./routes/myCryptos');
 const igScrapper = require('./routes/igScrapper');
 const ghScrapper = require('./routes/ghScrapper');
+const reqres     = require('./routes/reqres');
 
 module.exports = () => {
 
@@ -33,6 +34,14 @@ module.exports = () => {
     // Github APIs
     POST_____`/gh-api/getRepoInfo                                            ${ ghScrapper.getRepoInfo }`
     GET______`/gh-api/getRepoInfo/:username/:reponame                        ${ ghScrapper.getRepoInfo }`
+
+
+    // ReqRes APIs
+    MIDDLE___`/req-res/users                                                 ${ middleware.basicAuth }`
+    POST_____`/req-res/users                                                 ${ reqres.users }`
+    GET______`/req-res/users/:id                                             ${ reqres.users }`
+    PUT______`/req-res/users/:id                                             ${ reqres.users }`
+    DELETE___`/req-res/users/:id                                             ${ reqres.users }`
 
 
     //
