@@ -4,10 +4,10 @@ const { MIDDLE___, POST_____, GET______, PUT______, DELETE___, initializeRoute }
 
 const middleware = require('./middlewares');
 
-const myCryptos  = require('./routes/myCryptos');
-const igScrapper = require('./routes/igScrapper');
-const ghScrapper = require('./routes/ghScrapper');
-const reqres     = require('./routes/reqres');
+const myCryptos  = require('./routes/my_cryptos');
+const igScrapper = require('./routes/ig_scrapper');
+const ghScrapper = require('./routes/gh_api');
+const reqres     = require('./routes/req_res');
 
 module.exports = () => {
 
