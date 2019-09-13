@@ -6,6 +6,7 @@ const utils      = require('../utils');
 
 exports.init = async ({ app }) => {
 
+    app.get('/', (_req, res) => { res.status(200).end(); });
     app.get('/status', (_req, res) => { res.status(200).end(); });
     app.head('/status', (_req, res) => { res.status(200).end(); });
     app.enable('trust proxy');
