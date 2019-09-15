@@ -1,3 +1,13 @@
+/**
+ * @file express.js
+ * @description express js configuration
+ * 
+ * @author Arth Gajjar <iarthstar@gmail.com>
+ */
+
+
+
+// modules import
 const bodyParser = require('body-parser');
 const cors       = require('cors');
 const routes     = require('../api');

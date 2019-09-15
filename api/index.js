@@ -1,3 +1,14 @@
+/**
+ * @file api/index.js
+ * @description all the exposed routes are here
+ * 
+ * @author Arth Gajjar <iarthstar@gmail.com>
+ */
+
+
+
+
+// modules import
 const { Router } = require('express');
 
 const { MIDDLE___, POST_____, GET______, PUT______, DELETE___, initializeRoute } = require('./utils');
