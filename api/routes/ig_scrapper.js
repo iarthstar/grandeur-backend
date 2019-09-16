@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const getCount = ({ count }) => count;
 
-exports.getUserInfo = (method, req, res) => {
+exports.get_user_info = (method, req, res) => {
     let options = {};
 
     switch (method) {

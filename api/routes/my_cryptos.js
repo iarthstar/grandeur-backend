@@ -1,7 +1,7 @@
 const utils = require("../../utils");
 const axios = require('axios');
 
-exports.getPriceForCryptos = (method, req, res) => {
+exports.get_price_for_cryptos = (method, req, res) => {
 
     let options = {};
 

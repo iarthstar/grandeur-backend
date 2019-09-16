@@ -1,7 +1,7 @@
 const utils = require('../../utils');
 const axios = require('axios');
 
-exports.getRepoInfo = (method, req, res) => {
+exports.get_repo_info = (method, req, res) => {
 
     let options = {};
 

@@ -15,10 +15,10 @@ const { MIDDLE___, POST_____, GET______, PUT______, DELETE___, initializeRoute }
 
 const middleware = require('./middlewares');
 
-const myCryptos  = require('./routes/my_cryptos');
-const igScrapper = require('./routes/ig_scrapper');
-const ghScrapper = require('./routes/gh_api');
-const reqres     = require('./routes/req_res');
+const my_cryptos  = require('./routes/my_cryptos');
+const ig_scrapper = require('./routes/ig_scrapper');
+const gh_api = require('./routes/gh_api');
+const req_res     = require('./routes/req_res');
 
 module.exports = () => {
 
@@ -32,27 +32,27 @@ module.exports = () => {
 
 
     // MyCryptos APIs
-    POST_____`/my-cryptos/getPriceForCryptos                                 ${ myCryptos.getPriceForCryptos }`
-    GET______`/my-cryptos/getPriceForCryptos/:cryptoNames/:currencies        ${ myCryptos.getPriceForCryptos }`
+    POST_____`/my_cryptos/get_price_for_cryptos                                 ${ my_cryptos.get_price_for_cryptos }`
+    GET______`/my_cryptos/get_price_for_cryptos/:cryptoNames/:currencies        ${ my_cryptos.get_price_for_cryptos }`
 
 
     // Instagram Scrapper APIs
-    MIDDLE___`/ig-scrapper/getUserInfo                                       ${ middleware.testing }`
-    POST_____`/ig-scrapper/getUserInfo                                       ${ igScrapper.getUserInfo }`
-    GET______`/ig-scrapper/getUserInfo/:username                             ${ igScrapper.getUserInfo }`
+    MIDDLE___`/ig_scrapper/get_user_info                                        ${ middleware.testing }`
+    POST_____`/ig_scrapper/get_user_info                                        ${ ig_scrapper.get_user_info }`
+    GET______`/ig_scrapper/get_user_info/:username                              ${ ig_scrapper.get_user_info }`
 
 
     // Github APIs
-    POST_____`/gh-api/getRepoInfo                                            ${ ghScrapper.getRepoInfo }`
-    GET______`/gh-api/getRepoInfo/:username/:reponame                        ${ ghScrapper.getRepoInfo }`
+    POST_____`/gh_api/get_repo_info                                             ${ gh_api.get_repo_info }`
+    GET______`/gh_api/get_repo_info/:username/:reponame                         ${ gh_api.get_repo_info }`
 
 
     // ReqRes APIs
-    MIDDLE___`/req-res/users                                                 ${ middleware.basicAuth }`
-    POST_____`/req-res/users                                                 ${ reqres.users }`
-    GET______`/req-res/users/:id                                             ${ reqres.users }`
-    PUT______`/req-res/users/:id                                             ${ reqres.users }`
-    DELETE___`/req-res/users/:id                                             ${ reqres.users }`
+    MIDDLE___`/req_res/users                                                    ${ middleware.basicAuth }`
+    POST_____`/req_res/users                                                    ${ req_res.users }`
+    GET______`/req_res/users/:id                                                ${ req_res.users }`
+    PUT______`/req_res/users/:id                                                ${ req_res.users }`
+    DELETE___`/req_res/users/:id                                                ${ req_res.users }`
 
 
     //
