@@ -15,9 +15,9 @@ const { MIDDLE___, POST_____, GET______, PUT______, DELETE___, initializeRoute }
 
 const middleware = require('./middlewares');
 
-const my_cryptos  = require('./routes/my_cryptos');
+const crypto_api  = require('./routes/crypto_api');
 const ig_scrapper = require('./routes/ig_scrapper');
-const gh_api = require('./routes/gh_api');
+const gh_api      = require('./routes/gh_api');
 const req_res     = require('./routes/req_res');
 
 module.exports = () => {
@@ -31,9 +31,9 @@ module.exports = () => {
     //
 
 
-    // MyCryptos APIs
-    POST_____`/my_cryptos/get_price_for_cryptos                                 ${ my_cryptos.get_price_for_cryptos }`
-    GET______`/my_cryptos/get_price_for_cryptos/:cryptoNames/:currencies        ${ my_cryptos.get_price_for_cryptos }`
+    // CryptoCompare APIs
+    POST_____`/crypto_api/get_price_for_cryptos                                 ${ crypto_api.get_price_for_cryptos }`
+    GET______`/crypto_api/get_price_for_cryptos/:cryptoNames/:currencies        ${ crypto_api.get_price_for_cryptos }`
 
 
     // Instagram Scrapper APIs
@@ -53,6 +53,9 @@ module.exports = () => {
     GET______`/req_res/users/:id                                                ${ req_res.users }`
     PUT______`/req_res/users/:id                                                ${ req_res.users }`
     DELETE___`/req_res/users/:id                                                ${ req_res.users }`
+
+
+    // Todo :: MyCryptos APIs
 
 
     //
