@@ -30,7 +30,6 @@ exports.init = async ({ app }) => {
 
     app.use((_req, _res, next) => {
         const err = new Error('Something went wrong...');
-        utils.error(err);
         err['status'] = 404;
         next(err);
     });

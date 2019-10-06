@@ -37,7 +37,6 @@ module.exports = () => {
 
 
     // Instagram Scrapper APIs
-    MIDDLE___`/ig_scrapper/get_user_info                                        ${ middleware.testing }`
     POST_____`/ig_scrapper/get_user_info                                        ${ ig_scrapper.get_user_info }`
     GET______`/ig_scrapper/get_user_info/:username                              ${ ig_scrapper.get_user_info }`
 
@@ -45,6 +44,8 @@ module.exports = () => {
     // Github APIs
     POST_____`/gh_api/get_repo_info                                             ${ gh_api.get_repo_info }`
     GET______`/gh_api/get_repo_info/:username/:reponame                         ${ gh_api.get_repo_info }`
+    POST_____`/gh_api/get_release_info/                                         ${ gh_api.get_release_info }`
+    GET______`/gh_api/get_release_info/:username/:reponame                      ${ gh_api.get_release_info }`
 
 
     // ReqRes APIs
