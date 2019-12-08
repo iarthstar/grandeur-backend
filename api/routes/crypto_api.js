@@ -21,7 +21,15 @@ exports.get_price_for_cryptos = (method, req, res) => {
 
     axios(options)
         .then(response => {
-            return res.send(response.data);
+            let { data } = response;
+            let results = Object.keys(data).map(coin => ({
+                name: coin,
+                prices: Object.keys(data[coin]).map(currency => ({
+                    name: currency,
+                    value: data[coin][currency]
+                }))
+            }));
+            return res.send({ results });
         }).catch(err => {
             utils.error("AXIOS CATCH", err);
             return res.json({ error: false, error_message: "Something went wrong..." }).status(404);
